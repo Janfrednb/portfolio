@@ -1,6 +1,8 @@
-export function ReactLogo() {
+type LogoProps = { className?: string };
+
+export function ReactLogo({ className = "h-6 w-6" }: LogoProps) {
   return (
-    <svg viewBox="0 0 40 40" className="h-6 w-6">
+    <svg viewBox="0 0 40 40" className={className}>
       <circle cx="20" cy="20" r="3" fill="#61DAFB" />
       <g stroke="#61DAFB" strokeWidth="2" fill="none">
         <ellipse cx="20" cy="20" rx="16" ry="6.5" />
@@ -11,9 +13,9 @@ export function ReactLogo() {
   );
 }
 
-export function NextLogo() {
+export function NextLogo({ className = "h-6 w-6" }: LogoProps) {
   return (
-    <svg viewBox="0 0 40 40" className="h-6 w-6">
+    <svg viewBox="0 0 40 40" className={className}>
       <circle cx="20" cy="20" r="18" fill="black" />
       <text
         x="20"
@@ -30,9 +32,9 @@ export function NextLogo() {
   );
 }
 
-export function TypeScriptLogo() {
+export function TypeScriptLogo({ className = "h-6 w-6" }: LogoProps) {
   return (
-    <svg viewBox="0 0 40 40" className="h-6 w-6">
+    <svg viewBox="0 0 40 40" className={className}>
       <rect x="2" y="2" width="36" height="36" rx="6" fill="#3178C6" />
       <text
         x="20"
@@ -49,9 +51,9 @@ export function TypeScriptLogo() {
   );
 }
 
-export function TailwindLogo() {
+export function TailwindLogo({ className = "h-6 w-6" }: LogoProps) {
   return (
-    <svg viewBox="0 0 40 40" className="h-6 w-6">
+    <svg viewBox="0 0 40 40" className={className}>
       <path
         d="M8 20c2-6 6-9 12-9s10 3 12 9c-2-4-6-6-10-6s-8 3-10 7c-1-1-3-1-4-1z"
         fill="#38BDF8"
@@ -65,9 +67,9 @@ export function TailwindLogo() {
   );
 }
 
-export function FirebaseLogo() {
+export function FirebaseLogo({ className = "h-6 w-6" }: LogoProps) {
   return (
-    <svg viewBox="0 0 40 40" className="h-6 w-6">
+    <svg viewBox="0 0 40 40" className={className}>
       <defs>
         <linearGradient id="fireGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#FFCA28" />
@@ -80,9 +82,9 @@ export function FirebaseLogo() {
   );
 }
 
-export function GitLogo() {
+export function GitLogo({ className = "h-6 w-6" }: LogoProps) {
   return (
-    <svg viewBox="0 0 40 40" className="h-6 w-6">
+    <svg viewBox="0 0 40 40" className={className}>
       <g fill="none" stroke="#F05033" strokeWidth="2" strokeLinecap="round">
         <path d="M10 13 V27" />
         <path d="M13 20 H25" />

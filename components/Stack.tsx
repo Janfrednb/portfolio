@@ -31,13 +31,13 @@ export default function Stack() {
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           Stack
         </h2>
-        <div className="mt-8 grid max-w-2xl grid-cols-3 gap-4 sm:grid-cols-6">
+        <div className="mt-8 grid max-w-3xl grid-cols-3 gap-4 sm:grid-cols-6">
           {tools.map(({ name, Logo }) => (
             <div
               key={name}
-              className="flex flex-col items-center gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-5 transition-transform hover:-translate-y-1 dark:border-zinc-800 dark:bg-white/5"
+              className="flex flex-col items-center gap-3 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-7 transition-transform hover:-translate-y-1 dark:border-zinc-800 dark:bg-white/5"
             >
-              <Logo />
+              <Logo className="h-11 w-11" />
               <span className="text-center text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 {name}
               </span>
