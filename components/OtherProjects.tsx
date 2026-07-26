@@ -31,7 +31,7 @@ const projects = [
   {
     name: "Panadería Don Carlos",
     description:
-      "Práctica de uno de mis primeros cursos de Python — uno de los primeros proyectos que hice.",
+      "Práctica de uno de mis primeros cursos de Python, uno de los primeros proyectos que hice.",
     tech: "Python · Flask · Pandas",
     repoUrl: "https://github.com/Janfrednb/panaderia-don-carlos",
     image: "/screenshots/panaderia.png",

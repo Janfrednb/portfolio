@@ -27,7 +27,7 @@ export default function Hero() {
           </h1>
           <p className="mt-5 font-mono leading-8 text-zinc-600 dark:text-zinc-400">
             <span className="text-fuchsia-500">{"<p>"}</span> Developer junior construyendo
-            productos reales — actualmente trabajando en{" "}
+            productos reales. Actualmente trabajando en{" "}
             <span className="font-semibold text-zinc-950 dark:text-zinc-50">GymVibe</span>, un
             SaaS de gestión para gimnasios en LATAM.
             <span className="text-fuchsia-500">{"</p>"}</span>
