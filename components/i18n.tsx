@@ -74,7 +74,7 @@ const translations: Record<"es" | "en", Translations> = {
     contact: {
       badge: "Hablemos",
       title: "Contacto",
-      subtitle: "¿Tienes un proyecto en mente o quieres charlar? Escríbeme.",
+      subtitle: "¿Tienes un proyecto en mente? Convirtámoslo en software.",
     },
   },
   en: {
@@ -120,7 +120,7 @@ const translations: Record<"es" | "en", Translations> = {
     contact: {
       badge: "Let's talk",
       title: "Contact",
-      subtitle: "Have a project in mind or just want to chat? Reach out.",
+      subtitle: "Have a project in mind? Let's turn it into software.",
     },
   },
 };
