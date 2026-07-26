@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,32 +10,38 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist-mono);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b0b10;
-    --foreground: #ededed;
-  }
+:root.dark {
+  --background: #0b0b10;
+  --foreground: #ededed;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: radial-gradient(
-      ellipse 80% 60% at 50% -10%,
-      rgba(217, 70, 239, 0.15),
-      transparent 60%
-    );
-    background-repeat: no-repeat;
-  }
+:root.dark body {
+  background-image: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    rgba(217, 70, 239, 0.15),
+    transparent 60%
+  );
+  background-repeat: no-repeat;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: rgba(0, 0, 0, 0.08);
+}
+
+:root.dark .bg-dot-grid {
+  color: rgba(255, 255, 255, 0.08);
 }
 
 @keyframes blob {

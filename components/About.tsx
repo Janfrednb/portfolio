@@ -3,7 +3,7 @@ import Badge from "./Badge";
 
 export default function About() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section id="sobre-mi" className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
         <div className="grid gap-8 sm:grid-cols-3">
           <div>

@@ -20,7 +20,7 @@ const tools = [
 
 export default function Stack() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section id="stack" className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
         <Badge>Herramientas</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
