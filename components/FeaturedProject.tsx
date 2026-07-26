@@ -5,7 +5,15 @@ import BrowserFrame from "./BrowserFrame";
 import Badge from "./Badge";
 import { useLanguage } from "./i18n";
 
-const stack = ["Next.js", "Firebase", "TypeScript", "Tailwind CSS"];
+const stack = [
+  "HTML5",
+  "JavaScript",
+  "Firebase",
+  "Firestore",
+  "Tailwind CSS",
+  "Chart.js",
+  "FullCalendar",
+];
 
 export default function FeaturedProject() {
   const { t } = useLanguage();
