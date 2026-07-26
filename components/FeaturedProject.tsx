@@ -35,6 +35,7 @@ export default function FeaturedProject() {
             target="_blank"
             rel="noopener noreferrer"
             className="group block"
+            data-cursor-label={t.featured.viewProject}
           >
             <BrowserFrame
               src="/screenshots/gymvibe-dashboard.png"

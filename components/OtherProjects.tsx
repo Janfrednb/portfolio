@@ -67,6 +67,7 @@ export default function OtherProjects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block"
+                    data-cursor-label={t.other.viewProject}
                   >
                     <BrowserFrame
                       src={project.image}

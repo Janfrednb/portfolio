@@ -17,12 +17,14 @@ type Translations = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
-  featured: { badge: string; description: string; liveLink: string };
+  trustedBy: { label: string };
+  featured: { badge: string; description: string; liveLink: string; viewProject: string };
   other: {
     badge: string;
     title: string;
     demo: string;
     code: string;
+    viewProject: string;
     projects: { solutar: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
   };
   about: { badge: string; title: string; paragraph: string };
@@ -44,17 +46,20 @@ const translations: Record<"es" | "en", Translations> = {
       ctaPrimary: "Ver GymVibe",
       ctaSecondary: "Contáctame",
     },
+    trustedBy: { label: "Con quién he trabajado" },
     featured: {
       badge: "Proyecto destacado",
       description:
         "SaaS de gestión para gimnasios pequeños en LATAM. Pensado para dueños de gimnasios que hoy llevan sus cobros y membresías en cuadernos o Excel: GymVibe les da control de clientes, membresías y pagos en un solo lugar.",
       liveLink: "Ver GymVibe en vivo",
+      viewProject: "Ver proyecto",
     },
     other: {
       badge: "Otros proyectos",
       title: "Más trabajo",
       demo: "Ver demo",
       code: "Código",
+      viewProject: "Ver proyecto",
       projects: {
         solutar: { description: "Plataforma web para Solutar, empresa de Seguridad y Salud en el Trabajo (SST) en Colombia. Gestiona inspecciones de equipos para trabajo en alturas: portal de administración, portal de clientes y generación de actas en PDF.", tech: "HTML · Tailwind CSS" },
         microtaller: {
@@ -91,17 +96,20 @@ const translations: Record<"es" | "en", Translations> = {
       ctaPrimary: "See GymVibe",
       ctaSecondary: "Contact me",
     },
+    trustedBy: { label: "Companies I've worked with" },
     featured: {
       badge: "Featured project",
       description:
         "SaaS gym management platform for small gyms in Latin America. Built for gym owners who currently track payments and memberships in notebooks or spreadsheets: GymVibe gives them control over clients, memberships, and payments in one place.",
       liveLink: "See GymVibe live",
+      viewProject: "View project",
     },
     other: {
       badge: "Other projects",
       title: "More work",
       demo: "See demo",
       code: "Code",
+      viewProject: "View project",
       projects: {
         solutar: { description: "Web platform for Solutar, an Occupational Health and Safety (OHS) company in Colombia. Manages equipment inspections for work-at-height safety: admin dashboard, client portal, and PDF inspection reports.", tech: "HTML · Tailwind CSS" },
         microtaller: {

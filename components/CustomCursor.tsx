@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [label, setLabel] = useState<string | null>(null);
 
   useEffect(() => {
     const isFine = window.matchMedia("(pointer: fine)").matches;
@@ -27,6 +28,8 @@ export default function CustomCursor() {
         dotRef.current.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
       }
       const el = document.elementFromPoint(e.clientX, e.clientY);
+      const labelEl = el?.closest<HTMLElement>("[data-cursor-label]");
+      setLabel(labelEl?.dataset.cursorLabel ?? null);
       setHovering(!!el?.closest("a, button"));
     }
 
@@ -55,14 +58,26 @@ export default function CustomCursor() {
     <>
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[90] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500"
+        className={`pointer-events-none fixed top-0 left-0 z-[90] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500 transition-opacity duration-150 ${
+          label ? "opacity-0" : "opacity-100"
+        }`}
       />
       <div
         ref={ringRef}
-        className={`pointer-events-none fixed top-0 left-0 z-[90] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-500/60 transition-[width,height,opacity] duration-200 ${
-          hovering ? "h-12 w-12 opacity-100" : "h-8 w-8 opacity-60"
+        className={`pointer-events-none fixed top-0 left-0 z-[90] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border transition-[width,height,padding,opacity,background-color] duration-200 ${
+          label
+            ? "h-16 w-auto whitespace-nowrap border-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-5 opacity-100"
+            : hovering
+              ? "h-12 w-12 border-fuchsia-500/60 opacity-100"
+              : "h-8 w-8 border-fuchsia-500/60 opacity-60"
         }`}
-      />
+      >
+        {label && (
+          <span className="font-mono text-xs font-semibold whitespace-nowrap text-white">
+            {label}
+          </span>
+        )}
+      </div>
     </>
   );
 }
