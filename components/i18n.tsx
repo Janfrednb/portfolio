@@ -56,7 +56,7 @@ const translations: Record<"es" | "en", Translations> = {
       demo: "Ver demo",
       code: "Código",
       projects: {
-        solutar: { description: "Sitio web para Solutar, empresa de consultoría en Seguridad y Salud en el Trabajo (SST) en Colombia.", tech: "Sitio en producción" },
+        solutar: { description: "Plataforma web para Solutar, empresa de Seguridad y Salud en el Trabajo (SST) en Colombia. Gestiona inspecciones de equipos para trabajo en alturas: portal de administración, portal de clientes y generación de actas en PDF.", tech: "HTML · Tailwind CSS" },
         microtaller: {
           description: "Sistema de administración para talleres de motos: agenda de citas y checklist de alistamiento, con dashboard en tiempo real.",
           demoNote: "El demo puede tardar unos segundos en cargar la primera vez (plan gratuito de Render).",
@@ -102,7 +102,7 @@ const translations: Record<"es" | "en", Translations> = {
       demo: "See demo",
       code: "Code",
       projects: {
-        solutar: { description: "Website for Solutar, an Occupational Health and Safety (OHS) consulting company in Colombia.", tech: "Live site" },
+        solutar: { description: "Web platform for Solutar, an Occupational Health and Safety (OHS) company in Colombia. Manages equipment inspections for work-at-height safety: admin dashboard, client portal, and PDF inspection reports.", tech: "HTML · Tailwind CSS" },
         microtaller: {
           description: "Management system for motorcycle repair shops: appointment scheduling and an intake checklist, with a real-time dashboard.",
           demoNote: "The demo may take a few seconds to load the first time (Render's free plan).",
