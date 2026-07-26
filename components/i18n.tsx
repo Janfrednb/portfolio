@@ -2,7 +2,35 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-const translations = {
+type ProjectCopy = { description: string; tech?: string; demoNote?: string };
+
+type Translations = {
+  nav: { gymvibe: string; proyectos: string; sobreMi: string; stack: string; contacto: string; openMenu: string };
+  hero: {
+    greeting: string;
+    headingPre: string;
+    headingHighlight: string;
+    headingPost: string;
+    paragraphPre: string;
+    paragraphPost: string;
+    more: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
+  featured: { badge: string; description: string; liveLink: string };
+  other: {
+    badge: string;
+    title: string;
+    demo: string;
+    code: string;
+    projects: { solutar: ProjectCopy; microtaller: ProjectCopy; panaderia: ProjectCopy };
+  };
+  about: { badge: string; title: string; paragraph: string };
+  stack: { badge: string };
+  contact: { badge: string; title: string; subtitle: string };
+};
+
+const translations: Record<"es" | "en", Translations> = {
   es: {
     nav: { gymvibe: "GymVibe", proyectos: "Proyectos", sobreMi: "Sobre mí", stack: "Stack", contacto: "Contacto", openMenu: "Abrir menú" },
     hero: {
@@ -95,14 +123,14 @@ const translations = {
       subtitle: "Have a project in mind or just want to chat? Reach out.",
     },
   },
-} as const;
+};
 
 export type Lang = keyof typeof translations;
 
 type LanguageContextValue = {
   lang: Lang;
   toggle: () => void;
-  t: (typeof translations)["es"];
+  t: Translations;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -111,7 +139,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("es");
 
   useEffect(() => {
+    // Reads the saved language after mount, to avoid a hydration mismatch with the server-rendered "es" default.
     const saved = localStorage.getItem("lang");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (saved === "en" || saved === "es") setLang(saved);
   }, []);
 
