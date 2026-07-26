@@ -47,7 +47,7 @@ const translations: Record<"es" | "en", Translations> = {
     featured: {
       badge: "Proyecto destacado",
       description:
-        "SaaS de gestión para gimnasios pequeños en LATAM. Pensado para dueños de gimnasios de barrio que hoy llevan sus cobros y membresías en cuadernos o Excel: GymVibe les da control de clientes, membresías y pagos en un solo lugar, con cobro manual vía Nequi/transferencia (sin comisiones de plataformas de pago).",
+        "SaaS de gestión para gimnasios pequeños en LATAM. Pensado para dueños de gimnasios que hoy llevan sus cobros y membresías en cuadernos o Excel: GymVibe les da control de clientes, membresías y pagos en un solo lugar.",
       liveLink: "Ver GymVibe en vivo",
     },
     other: {
@@ -93,7 +93,7 @@ const translations: Record<"es" | "en", Translations> = {
     featured: {
       badge: "Featured project",
       description:
-        "SaaS gym management platform for small gyms in Latin America. Built for neighborhood gym owners who currently track payments and memberships in notebooks or spreadsheets: GymVibe gives them control over clients, memberships, and payments in one place, with manual payment via Nequi/bank transfer (no payment platform fees).",
+        "SaaS gym management platform for small gyms in Latin America. Built for gym owners who currently track payments and memberships in notebooks or spreadsheets: GymVibe gives them control over clients, memberships, and payments in one place.",
       liveLink: "See GymVibe live",
     },
     other: {
