@@ -69,9 +69,9 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative h-72 w-64 shrink-0 sm:h-96 sm:w-80">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-orange-500 [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]" />
-          <div className="absolute inset-1.5 overflow-hidden [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]">
+        <div className="relative h-80 w-64 shrink-0 sm:h-[28rem] sm:w-80">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-orange-500 [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)]" />
+          <div className="absolute inset-1.5 overflow-hidden [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)]">
             <Image src="/profile.jpg" alt="Janfred Naranjo" fill className="object-cover" />
           </div>
           <span className="absolute bottom-2 left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-500 font-mono text-white shadow-lg">
