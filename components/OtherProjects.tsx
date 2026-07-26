@@ -1,6 +1,9 @@
+"use client";
+
 import Reveal from "./Reveal";
 import BrowserFrame from "./BrowserFrame";
 import Badge from "./Badge";
+import { useLanguage } from "./i18n";
 
 const accents = ["violet", "fuchsia", "orange"] as const;
 const accentText: Record<(typeof accents)[number], string> = {
@@ -9,29 +12,24 @@ const accentText: Record<(typeof accents)[number], string> = {
   orange: "text-orange-600 dark:text-orange-400",
 };
 
-const projects = [
+const projectsBase = [
   {
+    key: "solutar" as const,
     name: "Solutar",
-    description:
-      "Sitio web para Solutar, empresa de consultoría en Seguridad y Salud en el Trabajo (SST) en Colombia.",
-    tech: "Sitio en producción",
     demoUrl: "https://www.solutar.com.co",
     image: "/screenshots/solutar.png",
   },
   {
+    key: "microtaller" as const,
     name: "MicroTaller",
-    description:
-      "Sistema de administración para talleres de motos: agenda de citas y checklist de alistamiento, con dashboard en tiempo real.",
     tech: "Python · Flask · Bootstrap",
     demoUrl: "https://microsoftware-taller.onrender.com/",
-    demoNote: "El demo puede tardar unos segundos en cargar la primera vez (plan gratuito de Render).",
     repoUrl: "https://github.com/Janfrednb/microsoftware-taller",
     image: "/screenshots/microsoftware.png",
   },
   {
+    key: "panaderia" as const,
     name: "Panadería Don Carlos",
-    description:
-      "Práctica de uno de mis primeros cursos de Python, uno de los primeros proyectos que hice.",
     tech: "Python · Flask · Pandas",
     repoUrl: "https://github.com/Janfrednb/panaderia-don-carlos",
     image: "/screenshots/panaderia.png",
@@ -39,17 +37,21 @@ const projects = [
 ];
 
 export default function OtherProjects() {
+  const { t } = useLanguage();
+
   return (
     <section id="proyectos" className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
-        <Badge>Otros proyectos</Badge>
+        <Badge>{t.other.badge}</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
-          Más trabajo
+          {t.other.title}
         </h2>
       </Reveal>
       <div className="mt-12 flex flex-col gap-16">
-        {projects.map((project, i) => {
+        {projectsBase.map((project, i) => {
           const accent = accents[i % accents.length];
+          const info = t.other.projects[project.key];
+          const tech = "tech" in info ? info.tech : project.tech;
           return (
             <Reveal key={project.name} delay={i * 100}>
               <div
@@ -65,7 +67,7 @@ export default function OtherProjects() {
                 >
                   <BrowserFrame
                     src={project.image}
-                    alt={`Captura de ${project.name}`}
+                    alt={`${project.name} screenshot`}
                     accent={accent}
                   />
                 </a>
@@ -74,14 +76,14 @@ export default function OtherProjects() {
                     {project.name}
                   </h3>
                   <p className="mt-2 leading-7 text-zinc-600 dark:text-zinc-400">
-                    {project.description}
+                    {info.description}
                   </p>
                   <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-500">
-                    {project.tech}
+                    {tech}
                   </p>
-                  {project.demoNote && (
+                  {"demoNote" in info && (
                     <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
-                      {project.demoNote}
+                      {info.demoNote}
                     </p>
                   )}
                   <div className="mt-4 flex gap-4 text-sm font-medium">
@@ -92,7 +94,7 @@ export default function OtherProjects() {
                         rel="noopener noreferrer"
                         className="text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
                       >
-                        Ver demo
+                        {t.other.demo}
                       </a>
                     )}
                     {project.repoUrl && (
@@ -102,7 +104,7 @@ export default function OtherProjects() {
                         rel="noopener noreferrer"
                         className="text-zinc-500 underline underline-offset-2 dark:text-zinc-400"
                       >
-                        Código
+                        {t.other.code}
                       </a>
                     )}
                   </div>

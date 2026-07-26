@@ -1,17 +1,20 @@
+"use client";
+
 import Reveal from "./Reveal";
 import Badge from "./Badge";
+import { useLanguage } from "./i18n";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section id="contacto" className="mx-auto max-w-3xl px-6 py-24 text-center">
       <Reveal>
-        <Badge>Hablemos</Badge>
+        <Badge>{t.contact.badge}</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
-          Contacto
+          {t.contact.title}
         </h2>
-        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-          ¿Tienes un proyecto en mente o quieres charlar? Escríbeme.
-        </p>
+        <p className="mt-4 text-zinc-600 dark:text-zinc-400">{t.contact.subtitle}</p>
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
             href="mailto:janfrednb@gmail.com"

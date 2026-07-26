@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo } from "./Logos";
+import { useLanguage } from "./i18n";
 
 const techIcons = [ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo];
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-dot-grid relative overflow-hidden px-6 py-20 sm:py-28">
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -15,21 +20,22 @@ export default function Hero() {
         <div className="flex-1 text-center sm:text-left">
           <p className="font-mono text-sm text-zinc-500 dark:text-zinc-400">
             <span className="text-fuchsia-500">{"<span>"}</span>
-            Hola, soy Janfred
+            {t.hero.greeting}
             <span className="text-fuchsia-500">{"</span>"}</span>
           </p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 sm:text-6xl dark:text-zinc-50">
-            Transformo <span className="text-fuchsia-500">{"{"}</span>
+            {t.hero.headingPre}
+            <span className="text-fuchsia-500">{"{"}</span>
             <span className="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
-              ideas
+              {t.hero.headingHighlight}
             </span>
-            <span className="text-fuchsia-500">{"}"}</span> en software
+            <span className="text-fuchsia-500">{"}"}</span>
+            {t.hero.headingPost}
           </h1>
           <p className="mt-5 font-mono leading-8 text-zinc-600 dark:text-zinc-400">
-            <span className="text-fuchsia-500">{"<p>"}</span> Developer junior construyendo
-            productos reales. Actualmente trabajando en{" "}
-            <span className="font-semibold text-zinc-950 dark:text-zinc-50">GymVibe</span>, un
-            SaaS de gestión para gimnasios en LATAM.
+            <span className="text-fuchsia-500">{"<p>"}</span> {t.hero.paragraphPre}
+            <span className="font-semibold text-zinc-950 dark:text-zinc-50">GymVibe</span>
+            {t.hero.paragraphPost}
             <span className="text-fuchsia-500">{"</p>"}</span>
           </p>
 
@@ -42,7 +48,9 @@ export default function Hero() {
                 <Icon />
               </div>
             ))}
-            <span className="font-mono text-sm text-zinc-400 dark:text-zinc-500">...y más</span>
+            <span className="font-mono text-sm text-zinc-400 dark:text-zinc-500">
+              {t.hero.more}
+            </span>
           </div>
 
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
@@ -50,13 +58,13 @@ export default function Hero() {
               href="#gymvibe"
               className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/25 transition-transform hover:scale-105"
             >
-              Ver GymVibe
+              {t.hero.ctaPrimary}
             </a>
             <a
               href="#contacto"
               className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 transition-transform hover:scale-105 dark:border-zinc-700 dark:text-zinc-50"
             >
-              Contáctame
+              {t.hero.ctaSecondary}
             </a>
           </div>
         </div>

@@ -1,14 +1,19 @@
+"use client";
+
 import Reveal from "./Reveal";
 import BrowserFrame from "./BrowserFrame";
 import Badge from "./Badge";
+import { useLanguage } from "./i18n";
 
 const stack = ["Next.js", "Firebase", "TypeScript", "Tailwind CSS"];
 
 export default function FeaturedProject() {
+  const { t } = useLanguage();
+
   return (
     <section id="gymvibe" className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
-        <Badge>Proyecto destacado</Badge>
+        <Badge>{t.featured.badge}</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           GymVibe
         </h2>
@@ -23,7 +28,7 @@ export default function FeaturedProject() {
         >
           <BrowserFrame
             src="/screenshots/gymvibe-dashboard.png"
-            alt="Captura del dashboard de GymVibe"
+            alt="GymVibe dashboard screenshot"
             accent="fuchsia"
           />
         </a>
@@ -31,10 +36,7 @@ export default function FeaturedProject() {
 
       <Reveal delay={150} className="mt-8 grid gap-8 sm:grid-cols-3">
         <p className="leading-8 text-zinc-600 sm:col-span-2 dark:text-zinc-400">
-          SaaS de gestión para gimnasios pequeños en LATAM. Pensado para dueños de gimnasios de
-          barrio que hoy llevan sus cobros y membresías en cuadernos o Excel: GymVibe les da
-          control de clientes, membresías y pagos en un solo lugar, con cobro manual vía
-          Nequi/transferencia (sin comisiones de plataformas de pago).
+          {t.featured.description}
         </p>
         <div>
           <div className="flex flex-wrap gap-2 sm:flex-col sm:items-start">
@@ -53,7 +55,7 @@ export default function FeaturedProject() {
             rel="noopener noreferrer"
             className="mt-4 inline-block text-sm font-medium text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
           >
-            Ver GymVibe en vivo
+            {t.featured.liveLink}
           </a>
         </div>
       </Reveal>

@@ -1,5 +1,8 @@
+"use client";
+
 import Reveal from "./Reveal";
 import Badge from "./Badge";
+import { useLanguage } from "./i18n";
 import {
   FirebaseLogo,
   NextLogo,
@@ -19,10 +22,12 @@ const tools = [
 ];
 
 export default function Stack() {
+  const { t } = useLanguage();
+
   return (
     <section id="stack" className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
-        <Badge>Herramientas</Badge>
+        <Badge>{t.stack.badge}</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           Stack
         </h2>
