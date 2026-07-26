@@ -95,3 +95,16 @@ export function GitLogo({ className = "h-6 w-6" }: LogoProps) {
     </svg>
   );
 }
+
+export function ClaudeLogo({ className = "h-6 w-6" }: LogoProps) {
+  const rays = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+  return (
+    <svg viewBox="0 0 40 40" className={className}>
+      <g fill="#D97757">
+        {rays.map((angle) => (
+          <path key={angle} d="M20 20 L18.3 4 L20 1 L21.7 4 Z" transform={`rotate(${angle} 20 20)`} />
+        ))}
+      </g>
+    </svg>
+  );
+}
