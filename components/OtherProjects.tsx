@@ -33,6 +33,7 @@ const projectsBase = [
     tech: "React · Flask · SQLAlchemy",
     repoUrl: "https://github.com/Janfrednb/api-gestion-citas",
     image: "/screenshots/api-citas.png",
+    aspect: "aspect-[1904/534]",
   },
 ];
 
@@ -69,6 +70,7 @@ export default function OtherProjects() {
                     src={project.image}
                     alt={`${project.name} screenshot`}
                     accent={accent}
+                    aspect={"aspect" in project ? project.aspect : undefined}
                   />
                 </a>
                 <div className="w-full sm:w-2/5">

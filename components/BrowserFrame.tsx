@@ -5,10 +5,12 @@ export default function BrowserFrame({
   src,
   alt,
   accent,
+  aspect = "aspect-[16/10]",
 }: {
   src: string;
   alt: string;
   accent?: "fuchsia" | "violet" | "orange";
+  aspect?: string;
 }) {
   return (
     <div className="relative overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-950">
@@ -17,7 +19,7 @@ export default function BrowserFrame({
         <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
       </div>
-      <div className="relative aspect-[16/10] w-full">
+      <div className={`relative w-full ${aspect}`}>
         <Image src={src} alt={alt} fill className="object-cover object-top" />
       </div>
       {accent && <ArrowButton color={accent} />}

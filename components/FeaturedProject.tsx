@@ -38,6 +38,7 @@ export default function FeaturedProject() {
             src="/screenshots/gymvibe-dashboard.png"
             alt="GymVibe dashboard screenshot"
             accent="fuchsia"
+            aspect="aspect-[1912/937]"
           />
         </a>
       </Reveal>
