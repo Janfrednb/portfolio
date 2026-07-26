@@ -87,3 +87,8 @@ body {
 .reveal.is-visible {
   animation: fade-in-up 0.7s ease-out forwards;
 }
+
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}

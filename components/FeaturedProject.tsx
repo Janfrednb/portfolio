@@ -3,6 +3,7 @@
 import Reveal from "./Reveal";
 import BrowserFrame from "./BrowserFrame";
 import Badge from "./Badge";
+import Tilt from "./Tilt";
 import { useLanguage } from "./i18n";
 
 const stack = [
@@ -28,19 +29,21 @@ export default function FeaturedProject() {
       </Reveal>
 
       <Reveal delay={100} className="mt-8">
-        <a
-          href="https://fitsaas-e9f94.web.app/index.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-        >
-          <BrowserFrame
-            src="/screenshots/gymvibe-dashboard.png"
-            alt="GymVibe dashboard screenshot"
-            accent="fuchsia"
-            aspect="aspect-[1912/937]"
-          />
-        </a>
+        <Tilt>
+          <a
+            href="https://fitsaas-e9f94.web.app/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block"
+          >
+            <BrowserFrame
+              src="/screenshots/gymvibe-dashboard.png"
+              alt="GymVibe dashboard screenshot"
+              accent="fuchsia"
+              aspect="aspect-[1912/937]"
+            />
+          </a>
+        </Tilt>
       </Reveal>
 
       <Reveal delay={150} className="mt-8 grid gap-8 sm:grid-cols-3">

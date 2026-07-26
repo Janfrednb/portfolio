@@ -2,6 +2,7 @@
 
 import Reveal from "./Reveal";
 import Badge from "./Badge";
+import Magnetic from "./Magnetic";
 import { useLanguage } from "./i18n";
 
 export default function Contact() {
@@ -16,28 +17,34 @@ export default function Contact() {
         </h2>
         <p className="mt-4 text-zinc-600 dark:text-zinc-400">{t.contact.subtitle}</p>
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a
-            href="mailto:janfrednb@gmail.com"
-            className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
-          >
-            janfrednb@gmail.com
-          </a>
-          <a
-            href="https://github.com/Janfrednb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 transition-transform hover:scale-105 dark:border-zinc-700 dark:text-zinc-50"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/janfred-naranjo-53a3a016b"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 transition-transform hover:scale-105 dark:border-zinc-700 dark:text-zinc-50"
-          >
-            LinkedIn
-          </a>
+          <Magnetic>
+            <a
+              href="mailto:janfrednb@gmail.com"
+              className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-6 py-3 text-sm font-medium text-white"
+            >
+              janfrednb@gmail.com
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="https://github.com/Janfrednb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 dark:border-zinc-700 dark:text-zinc-50"
+            >
+              GitHub
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="https://www.linkedin.com/in/janfred-naranjo-53a3a016b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 dark:border-zinc-700 dark:text-zinc-50"
+            >
+              LinkedIn
+            </a>
+          </Magnetic>
         </div>
       </Reveal>
     </section>

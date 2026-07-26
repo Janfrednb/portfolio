@@ -3,6 +3,7 @@
 import Reveal from "./Reveal";
 import BrowserFrame from "./BrowserFrame";
 import Badge from "./Badge";
+import Tilt from "./Tilt";
 import { useLanguage } from "./i18n";
 
 const accents = ["violet", "fuchsia", "orange"] as const;
@@ -60,19 +61,21 @@ export default function OtherProjects() {
                   i % 2 === 1 ? "sm:flex-row-reverse" : ""
                 }`}
               >
-                <a
-                  href={project.demoUrl ?? project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-3/5"
-                >
-                  <BrowserFrame
-                    src={project.image}
-                    alt={`${project.name} screenshot`}
-                    accent={accent}
-                    aspect={"aspect" in project ? project.aspect : undefined}
-                  />
-                </a>
+                <Tilt className="w-full sm:w-3/5">
+                  <a
+                    href={project.demoUrl ?? project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <BrowserFrame
+                      src={project.image}
+                      alt={`${project.name} screenshot`}
+                      accent={accent}
+                      aspect={"aspect" in project ? project.aspect : undefined}
+                    />
+                  </a>
+                </Tilt>
                 <div className="w-full sm:w-2/5">
                   <h3 className={`text-2xl font-semibold ${accentText[accent]}`}>
                     {project.name}

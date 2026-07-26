@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo } from "./Logos";
 import { useLanguage } from "./i18n";
+import Magnetic from "./Magnetic";
 
 const techIcons = [ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo];
 
@@ -54,18 +55,22 @@ export default function Hero() {
           </div>
 
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
-            <a
-              href="#gymvibe"
-              className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/25 transition-transform hover:scale-105"
-            >
-              {t.hero.ctaPrimary}
-            </a>
-            <a
-              href="#contacto"
-              className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 transition-transform hover:scale-105 dark:border-zinc-700 dark:text-zinc-50"
-            >
-              {t.hero.ctaSecondary}
-            </a>
+            <Magnetic>
+              <a
+                href="#gymvibe"
+                className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/25"
+              >
+                {t.hero.ctaPrimary}
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="#contacto"
+                className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 dark:border-zinc-700 dark:text-zinc-50"
+              >
+                {t.hero.ctaSecondary}
+              </a>
+            </Magnetic>
           </div>
         </div>
 
