@@ -61,7 +61,7 @@ const translations: Record<"es" | "en", Translations> = {
           description: "Sistema de administración para talleres de motos: agenda de citas y checklist de alistamiento, con dashboard en tiempo real.",
         },
         citas: {
-          description: "API backend en Flask para gestión de citas de un negocio pequeño, con SQLAlchemy y SQLite. Endpoints REST para crear y listar citas.",
+          description: "Sistema de gestión de citas para un negocio pequeño: frontend en React (Vite) y backend en Flask con SQLAlchemy y SQLite.",
         },
       },
     },
@@ -108,7 +108,7 @@ const translations: Record<"es" | "en", Translations> = {
           description: "Management system for motorcycle repair shops: appointment scheduling and an intake checklist, with a real-time dashboard.",
         },
         citas: {
-          description: "Flask backend API for appointment management for a small business, using SQLAlchemy and SQLite. REST endpoints to create and list appointments.",
+          description: "Appointment management system for a small business: React (Vite) frontend and a Flask backend with SQLAlchemy and SQLite.",
         },
       },
     },

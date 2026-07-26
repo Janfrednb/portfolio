@@ -29,8 +29,8 @@ const projectsBase = [
   },
   {
     key: "citas" as const,
-    name: "API de Citas",
-    tech: "Python · Flask · SQLAlchemy",
+    name: "Gestión de Citas",
+    tech: "React · Flask · SQLAlchemy",
     repoUrl: "https://github.com/Janfrednb/api-gestion-citas",
     image: "/screenshots/api-citas.png",
   },
