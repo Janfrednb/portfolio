@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import GymVibeIllustration from "./GymVibeIllustration";
+import BrowserFrame from "./BrowserFrame";
 
 const stack = ["Next.js", "Firebase", "TypeScript", "Tailwind CSS"];
 
@@ -16,9 +16,14 @@ export default function FeaturedProject() {
       </Reveal>
 
       <Reveal delay={100} className="mt-8">
-        <div className="overflow-hidden rounded-xl border border-zinc-200 shadow-sm dark:border-zinc-800">
-          <GymVibeIllustration />
-        </div>
+        <a
+          href="https://fitsaas-e9f94.web.app/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block"
+        >
+          <BrowserFrame src="/screenshots/gymvibe.png" alt="Captura de GymVibe" />
+        </a>
       </Reveal>
 
       <Reveal delay={150}>
@@ -38,6 +43,14 @@ export default function FeaturedProject() {
             </span>
           ))}
         </div>
+        <a
+          href="https://fitsaas-e9f94.web.app/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block text-sm font-medium text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
+        >
+          Ver GymVibe en vivo
+        </a>
       </Reveal>
     </section>
   );

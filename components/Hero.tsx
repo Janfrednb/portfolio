@@ -7,7 +7,7 @@ export default function Hero() {
         <div className="animate-blob animation-delay-4000 absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-orange-300/30 blur-3xl dark:bg-orange-500/20" />
       </div>
 
-      <p className="text-sm font-medium tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+      <p className="text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl dark:text-zinc-50">
         Janfred Naranjo
       </p>
       <h1 className="max-w-2xl bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl">
