@@ -47,16 +47,17 @@ export default function OtherProjects() {
           Más trabajo
         </h2>
       </Reveal>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="mt-12 flex flex-col gap-16">
         {projects.map((project, i) => {
           const accent = accents[i % accents.length];
           return (
             <Reveal key={project.name} delay={i * 100}>
-              <div className="group">
+              <div className="group flex flex-col items-center gap-8 sm:flex-row">
                 <a
                   href={project.demoUrl ?? project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-full sm:w-3/5"
                 >
                   <BrowserFrame
                     src={project.image}
@@ -64,39 +65,43 @@ export default function OtherProjects() {
                     accent={accent}
                   />
                 </a>
-                <h3 className={`mt-4 font-semibold ${accentText[accent]}`}>{project.name}</h3>
-                <p className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-                <p className="mt-2 text-xs font-medium text-zinc-500 dark:text-zinc-500">
-                  {project.tech}
-                </p>
-                {project.demoNote && (
-                  <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
-                    {project.demoNote}
+                <div className="w-full sm:w-2/5">
+                  <h3 className={`text-2xl font-semibold ${accentText[accent]}`}>
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 leading-7 text-zinc-600 dark:text-zinc-400">
+                    {project.description}
                   </p>
-                )}
-                <div className="mt-2 flex gap-4 text-xs font-medium">
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
-                    >
-                      Ver demo
-                    </a>
+                  <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-500">
+                    {project.tech}
+                  </p>
+                  {project.demoNote && (
+                    <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
+                      {project.demoNote}
+                    </p>
                   )}
-                  {project.repoUrl && (
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 underline underline-offset-2 dark:text-zinc-400"
-                    >
-                      Código
-                    </a>
-                  )}
+                  <div className="mt-4 flex gap-4 text-sm font-medium">
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
+                      >
+                        Ver demo
+                      </a>
+                    )}
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-500 underline underline-offset-2 dark:text-zinc-400"
+                      >
+                        Código
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </Reveal>

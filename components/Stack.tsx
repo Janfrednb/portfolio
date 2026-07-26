@@ -1,13 +1,21 @@
 import Reveal from "./Reveal";
 import Badge from "./Badge";
+import {
+  FirebaseLogo,
+  NextLogo,
+  ReactLogo,
+  TypeScriptLogo,
+  TailwindLogo,
+  GitLogo,
+} from "./Logos";
 
 const tools = [
-  { name: "Firebase", emoji: "🔥" },
-  { name: "Next.js", emoji: "▲" },
-  { name: "React", emoji: "⚛️" },
-  { name: "TypeScript", emoji: "🔷" },
-  { name: "Tailwind CSS", emoji: "🎨" },
-  { name: "Git", emoji: "🌿" },
+  { name: "Firebase", Logo: FirebaseLogo },
+  { name: "Next.js", Logo: NextLogo },
+  { name: "React", Logo: ReactLogo },
+  { name: "TypeScript", Logo: TypeScriptLogo },
+  { name: "Tailwind CSS", Logo: TailwindLogo },
+  { name: "Git", Logo: GitLogo },
 ];
 
 export default function Stack() {
@@ -18,15 +26,17 @@ export default function Stack() {
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           Stack
         </h2>
-        <div className="mt-6 flex flex-wrap gap-3">
-          {tools.map((tool) => (
-            <span
-              key={tool.name}
-              className="flex items-center gap-2 rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-700 transition-transform hover:-translate-y-0.5 dark:bg-zinc-900 dark:text-zinc-300"
+        <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-6">
+          {tools.map(({ name, Logo }) => (
+            <div
+              key={name}
+              className="flex flex-col items-center gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-5 transition-transform hover:-translate-y-1 dark:border-zinc-800 dark:bg-white/5"
             >
-              <span>{tool.emoji}</span>
-              {tool.name}
-            </span>
+              <Logo />
+              <span className="text-center text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                {name}
+              </span>
+            </div>
           ))}
         </div>
       </Reveal>

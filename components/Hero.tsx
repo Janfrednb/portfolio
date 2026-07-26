@@ -1,10 +1,11 @@
 import Badge from "./Badge";
+import DeviceMockup from "./DeviceMockup";
 
 const chips = ["Firebase", "Next.js", "Con ayuda de IA"];
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] flex-col items-center justify-center gap-6 overflow-hidden px-6 text-center">
+    <section className="relative flex min-h-[90vh] flex-col items-center justify-center gap-6 overflow-hidden px-6 pt-16 pb-8 text-center">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="animate-blob absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-fuchsia-400/30 blur-3xl dark:bg-fuchsia-500/25" />
         <div className="animate-blob animation-delay-2000 absolute top-1/3 right-1/4 h-72 w-72 rounded-full bg-violet-400/30 blur-3xl dark:bg-violet-500/25" />
@@ -44,6 +45,13 @@ export default function Hero() {
           </span>
         ))}
       </div>
+
+      <DeviceMockup
+        mainSrc="/screenshots/gymvibe.png"
+        mainAlt="Captura de GymVibe"
+        secondarySrc="/screenshots/solutar.png"
+        secondaryAlt="Captura de Solutar"
+      />
     </section>
   );
 }
