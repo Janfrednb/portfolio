@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-type ProjectCopy = { description: string; tech?: string; demoNote?: string };
+type ProjectCopy = { description: string; tech?: string };
 
 type Translations = {
   nav: { gymvibe: string; proyectos: string; sobreMi: string; stack: string; contacto: string; openMenu: string };
@@ -23,7 +23,7 @@ type Translations = {
     title: string;
     demo: string;
     code: string;
-    projects: { solutar: ProjectCopy; microtaller: ProjectCopy; panaderia: ProjectCopy };
+    projects: { solutar: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
   };
   about: { badge: string; title: string; paragraph: string };
   stack: { badge: string };
@@ -59,9 +59,10 @@ const translations: Record<"es" | "en", Translations> = {
         solutar: { description: "Plataforma web para Solutar, empresa de Seguridad y Salud en el Trabajo (SST) en Colombia. Gestiona inspecciones de equipos para trabajo en alturas: portal de administración, portal de clientes y generación de actas en PDF.", tech: "HTML · Tailwind CSS" },
         microtaller: {
           description: "Sistema de administración para talleres de motos: agenda de citas y checklist de alistamiento, con dashboard en tiempo real.",
-          demoNote: "El demo puede tardar unos segundos en cargar la primera vez (plan gratuito de Render).",
         },
-        panaderia: { description: "Práctica de uno de mis primeros cursos de Python, uno de los primeros proyectos que hice." },
+        citas: {
+          description: "API backend en Flask para gestión de citas de un negocio pequeño, con SQLAlchemy y SQLite. Endpoints REST para crear y listar citas.",
+        },
       },
     },
     about: {
@@ -105,9 +106,10 @@ const translations: Record<"es" | "en", Translations> = {
         solutar: { description: "Web platform for Solutar, an Occupational Health and Safety (OHS) company in Colombia. Manages equipment inspections for work-at-height safety: admin dashboard, client portal, and PDF inspection reports.", tech: "HTML · Tailwind CSS" },
         microtaller: {
           description: "Management system for motorcycle repair shops: appointment scheduling and an intake checklist, with a real-time dashboard.",
-          demoNote: "The demo may take a few seconds to load the first time (Render's free plan).",
         },
-        panaderia: { description: "Practice project from one of my first Python courses, one of the first projects I ever built." },
+        citas: {
+          description: "Flask backend API for appointment management for a small business, using SQLAlchemy and SQLite. REST endpoints to create and list appointments.",
+        },
       },
     },
     about: {

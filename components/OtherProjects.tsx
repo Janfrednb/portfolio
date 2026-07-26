@@ -28,11 +28,11 @@ const projectsBase = [
     image: "/screenshots/microsoftware.png",
   },
   {
-    key: "panaderia" as const,
-    name: "Panadería Don Carlos",
-    tech: "Python · Flask · Pandas",
-    repoUrl: "https://github.com/Janfrednb/panaderia-don-carlos",
-    image: "/screenshots/panaderia.png",
+    key: "citas" as const,
+    name: "API de Citas",
+    tech: "Python · Flask · SQLAlchemy",
+    repoUrl: "https://github.com/Janfrednb/api-gestion-citas",
+    image: "/screenshots/api-citas.png",
   },
 ];
 
@@ -81,11 +81,6 @@ export default function OtherProjects() {
                   <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-500">
                     {tech}
                   </p>
-                  {"demoNote" in info && (
-                    <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
-                      {info.demoNote}
-                    </p>
-                  )}
                   <div className="mt-4 flex gap-4 text-sm font-medium">
                     {project.demoUrl && (
                       <a

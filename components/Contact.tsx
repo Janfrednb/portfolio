@@ -30,6 +30,14 @@ export default function Contact() {
           >
             GitHub
           </a>
+          <a
+            href="https://www.linkedin.com/in/janfred-naranjo-53a3a016b"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-950 transition-transform hover:scale-105 dark:border-zinc-700 dark:text-zinc-50"
+          >
+            LinkedIn
+          </a>
         </div>
       </Reveal>
     </section>
