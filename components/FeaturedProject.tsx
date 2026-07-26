@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
 import BrowserFrame from "./BrowserFrame";
+import Badge from "./Badge";
 
 const stack = ["Next.js", "Firebase", "TypeScript", "Tailwind CSS"];
 
@@ -7,10 +8,8 @@ export default function FeaturedProject() {
   return (
     <section id="gymvibe" className="mx-auto max-w-4xl px-6 py-24">
       <Reveal>
-        <p className="text-sm font-medium text-fuchsia-600 dark:text-fuchsia-400">
-          Proyecto destacado
-        </p>
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
+        <Badge>Proyecto destacado</Badge>
+        <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           GymVibe
         </h2>
       </Reveal>
@@ -22,7 +21,7 @@ export default function FeaturedProject() {
           rel="noopener noreferrer"
           className="group block"
         >
-          <BrowserFrame src="/screenshots/gymvibe.png" alt="Captura de GymVibe" />
+          <BrowserFrame src="/screenshots/gymvibe.png" alt="Captura de GymVibe" accent="fuchsia" />
         </a>
       </Reveal>
 

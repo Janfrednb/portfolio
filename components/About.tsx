@@ -1,10 +1,12 @@
 import Reveal from "./Reveal";
+import Badge from "./Badge";
 
 export default function About() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24">
       <Reveal>
-        <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
+        <Badge>Quién soy</Badge>
+        <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           Sobre mí
         </h2>
         <p className="mt-6 leading-8 text-zinc-600 dark:text-zinc-400">

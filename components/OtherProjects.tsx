@@ -1,5 +1,13 @@
 import Reveal from "./Reveal";
 import BrowserFrame from "./BrowserFrame";
+import Badge from "./Badge";
+
+const accents = ["violet", "fuchsia", "orange"] as const;
+const accentText: Record<(typeof accents)[number], string> = {
+  violet: "text-violet-600 dark:text-violet-400",
+  fuchsia: "text-fuchsia-600 dark:text-fuchsia-400",
+  orange: "text-orange-600 dark:text-orange-400",
+};
 
 const projects = [
   {
@@ -34,56 +42,66 @@ export default function OtherProjects() {
   return (
     <section className="mx-auto max-w-4xl px-6 py-24">
       <Reveal>
-        <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
-          Otros proyectos
+        <Badge>Otros proyectos</Badge>
+        <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
+          Más trabajo
         </h2>
       </Reveal>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {projects.map((project, i) => (
-          <Reveal key={project.name} delay={i * 100}>
-            <div className="group">
-              <a
-                href={project.demoUrl ?? project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <BrowserFrame src={project.image} alt={`Captura de ${project.name}`} />
-              </a>
-              <h3 className="mt-4 font-medium text-zinc-950 dark:text-zinc-50">{project.name}</h3>
-              <p className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                {project.description}
-              </p>
-              <p className="mt-2 text-xs font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                {project.tech}
-              </p>
-              {project.demoNote && (
-                <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">{project.demoNote}</p>
-              )}
-              <div className="mt-2 flex gap-4 text-xs font-medium">
-                {project.demoUrl && (
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
-                  >
-                    Ver demo
-                  </a>
+        {projects.map((project, i) => {
+          const accent = accents[i % accents.length];
+          return (
+            <Reveal key={project.name} delay={i * 100}>
+              <div className="group">
+                <a
+                  href={project.demoUrl ?? project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <BrowserFrame
+                    src={project.image}
+                    alt={`Captura de ${project.name}`}
+                    accent={accent}
+                  />
+                </a>
+                <h3 className={`mt-4 font-semibold ${accentText[accent]}`}>{project.name}</h3>
+                <p className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  {project.description}
+                </p>
+                <p className="mt-2 text-xs font-medium text-zinc-500 dark:text-zinc-500">
+                  {project.tech}
+                </p>
+                {project.demoNote && (
+                  <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
+                    {project.demoNote}
+                  </p>
                 )}
-                {project.repoUrl && (
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-zinc-500 underline underline-offset-2 dark:text-zinc-400"
-                  >
-                    Código
-                  </a>
-                )}
+                <div className="mt-2 flex gap-4 text-xs font-medium">
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-950 underline underline-offset-2 dark:text-zinc-50"
+                    >
+                      Ver demo
+                    </a>
+                  )}
+                  {project.repoUrl && (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-500 underline underline-offset-2 dark:text-zinc-400"
+                    >
+                      Código
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          </Reveal>
-        ))}
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );
