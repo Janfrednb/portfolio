@@ -40,7 +40,7 @@ const projects = [
 
 export default function OtherProjects() {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
         <Badge>Otros proyectos</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
@@ -52,7 +52,11 @@ export default function OtherProjects() {
           const accent = accents[i % accents.length];
           return (
             <Reveal key={project.name} delay={i * 100}>
-              <div className="group flex flex-col items-center gap-8 sm:flex-row">
+              <div
+                className={`group flex flex-col items-center gap-10 sm:flex-row ${
+                  i % 2 === 1 ? "sm:flex-row-reverse" : ""
+                }`}
+              >
                 <a
                   href={project.demoUrl ?? project.repoUrl}
                   target="_blank"

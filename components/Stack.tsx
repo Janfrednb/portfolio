@@ -20,13 +20,13 @@ const tools = [
 
 export default function Stack() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6 py-24">
       <Reveal>
         <Badge>Herramientas</Badge>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
           Stack
         </h2>
-        <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-6">
+        <div className="mt-8 grid max-w-2xl grid-cols-3 gap-4 sm:grid-cols-6">
           {tools.map(({ name, Logo }) => (
             <div
               key={name}

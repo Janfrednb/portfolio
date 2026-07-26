@@ -47,10 +47,10 @@ export default function Hero() {
       </div>
 
       <DeviceMockup
-        mainSrc="/screenshots/gymvibe.png"
-        mainAlt="Captura de GymVibe"
-        secondarySrc="/screenshots/solutar.png"
-        secondaryAlt="Captura de Solutar"
+        mainSrc="/screenshots/solutar.png"
+        mainAlt="Captura de Solutar"
+        secondarySrc="/screenshots/gymvibe.png"
+        secondaryAlt="Captura de GymVibe"
       />
     </section>
   );
