@@ -17,7 +17,7 @@ type Translations = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
-  trustedBy: { label: string };
+  trustedBy: { label: string; viewSite: string; viewInstagram: string };
   featured: { badge: string; description: string; liveLink: string; viewProject: string };
   other: {
     badge: string;
@@ -46,7 +46,7 @@ const translations: Record<"es" | "en", Translations> = {
       ctaPrimary: "Ver GymVibe",
       ctaSecondary: "Contáctame",
     },
-    trustedBy: { label: "Con quién he trabajado" },
+    trustedBy: { label: "Con quién he trabajado", viewSite: "Ver sitio", viewInstagram: "Ver Instagram" },
     featured: {
       badge: "Proyecto destacado",
       description:
@@ -96,7 +96,7 @@ const translations: Record<"es" | "en", Translations> = {
       ctaPrimary: "See GymVibe",
       ctaSecondary: "Contact me",
     },
-    trustedBy: { label: "Companies I've worked with" },
+    trustedBy: { label: "Companies I've worked with", viewSite: "Visit site", viewInstagram: "View Instagram" },
     featured: {
       badge: "Featured project",
       description:
