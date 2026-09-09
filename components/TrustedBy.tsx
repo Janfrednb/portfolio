@@ -23,6 +23,12 @@ const logos = [
     href: "https://www.instagram.com/gsp.training?igsh=YXZwNHBoa3g5dnR1",
     kind: "instagram" as const,
   },
+  {
+    name: "Club de Tiro El Reservista",
+    src: "/logos/el-reservista.png",
+    href: "https://links.elreservista.co",
+    kind: "site" as const,
+  },
 ];
 
 export default function TrustedBy() {
