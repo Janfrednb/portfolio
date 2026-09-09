@@ -25,7 +25,7 @@ type Translations = {
     demo: string;
     code: string;
     viewProject: string;
-    projects: { solutar: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
+    projects: { reservista: ProjectCopy; solutar: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
   };
   about: { badge: string; title: string; paragraph: string };
   stack: { badge: string };
@@ -61,6 +61,7 @@ const translations: Record<"es" | "en", Translations> = {
       code: "Código",
       viewProject: "Ver proyecto",
       projects: {
+        reservista: { description: "Sistema de gestión integral para el Club de Tiro El Reservista: clientes, facturación, caja, inventario, catálogo, control de membresías, usuarios con roles y auditoría. En producción." },
         solutar: { description: "Plataforma web para Solutar, empresa de Seguridad y Salud en el Trabajo (SST) en Colombia. Gestiona inspecciones de equipos para trabajo en alturas: portal de administración, portal de clientes y generación de actas en PDF.", tech: "HTML · Tailwind CSS" },
         microtaller: {
           description: "Sistema de administración para talleres de motos: agenda de citas y checklist de alistamiento, con dashboard en tiempo real.",
@@ -111,6 +112,7 @@ const translations: Record<"es" | "en", Translations> = {
       code: "Code",
       viewProject: "View project",
       projects: {
+        reservista: { description: "Full management system for the El Reservista shooting club: clients, billing, cash register, inventory, catalog, membership control, role-based users, and an audit log. Live in production." },
         solutar: { description: "Web platform for Solutar, an Occupational Health and Safety (OHS) company in Colombia. Manages equipment inspections for work-at-height safety: admin dashboard, client portal, and PDF inspection reports.", tech: "HTML · Tailwind CSS" },
         microtaller: {
           description: "Management system for motorcycle repair shops: appointment scheduling and an intake checklist, with a real-time dashboard.",

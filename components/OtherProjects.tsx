@@ -15,6 +15,14 @@ const accentText: Record<(typeof accents)[number], string> = {
 
 const projectsBase = [
   {
+    key: "reservista" as const,
+    name: "Polígono El Reservista",
+    tech: "React · Node · Express · Prisma · PostgreSQL",
+    demoUrl: "https://app.elreservista.co",
+    image: "/screenshots/reservista.png",
+    aspect: "aspect-[1919/802]",
+  },
+  {
     key: "solutar" as const,
     name: "Solutar",
     demoUrl: "https://www.solutar.com.co",
