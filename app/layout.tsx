@@ -4,6 +4,7 @@ import { LanguageProvider } from "@/components/i18n";
 import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
+import SiteBackground from "@/components/SiteBackground";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,6 +41,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <SiteBackground />
         <Preloader />
         <CustomCursor />
         <LanguageProvider>

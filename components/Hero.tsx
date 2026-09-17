@@ -1,12 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo } from "./Logos";
 import { useLanguage } from "./i18n";
 import Magnetic from "./Magnetic";
-
-const ParticleField = dynamic(() => import("./ParticleField"), { ssr: false });
 
 const techIcons = [ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo];
 
@@ -18,9 +15,6 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="animate-blob absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-fuchsia-400/30 blur-3xl dark:bg-fuchsia-500/25" />
         <div className="animate-blob animation-delay-2000 absolute top-1/3 right-1/4 h-72 w-72 rounded-full bg-violet-400/30 blur-3xl dark:bg-violet-500/25" />
-      </div>
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <ParticleField />
       </div>
 
       <div className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-12 sm:flex-row">
