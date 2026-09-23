@@ -1,17 +1,23 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import { ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo } from "./Logos";
 import { useLanguage } from "./i18n";
 import Magnetic from "./Magnetic";
+
+const ParticleText = dynamic(() => import("./ParticleText"), { ssr: false });
 
 const techIcons = [ReactLogo, NextLogo, FirebaseLogo, TypeScriptLogo, TailwindLogo];
 
 export default function Hero() {
   const { t } = useLanguage();
+  const [highlightRevealed, setHighlightRevealed] = useState(true);
+  const [showParticles, setShowParticles] = useState(true);
 
   return (
-    <section className="bg-dot-grid relative isolate overflow-hidden px-6 py-20 sm:py-28">
+    <section id="top" className="bg-dot-grid relative isolate overflow-hidden px-6 py-20 sm:py-28">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="animate-blob absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-fuchsia-400/30 blur-3xl dark:bg-fuchsia-500/25" />
         <div className="animate-blob animation-delay-2000 absolute top-1/3 right-1/4 h-72 w-72 rounded-full bg-violet-400/30 blur-3xl dark:bg-violet-500/25" />
@@ -27,8 +33,24 @@ export default function Hero() {
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 sm:text-6xl dark:text-zinc-50">
             {t.hero.headingPre}
             <span className="text-fuchsia-500">{"{"}</span>
-            <span className="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
-              {t.hero.headingHighlight}
+            <span className="relative inline-block">
+              <span
+                className={`bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent transition-opacity duration-500 ${
+                  highlightRevealed ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {t.hero.headingHighlight}
+              </span>
+              {showParticles && (
+                <ParticleText
+                  text={t.hero.headingHighlight}
+                  onStart={() => setHighlightRevealed(false)}
+                  onSettled={() => {
+                    setHighlightRevealed(true);
+                    setTimeout(() => setShowParticles(false), 500);
+                  }}
+                />
+              )}
             </span>
             <span className="text-fuchsia-500">{"}"}</span>
             {t.hero.headingPost}

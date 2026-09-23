@@ -4,26 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
+import { useIsDark } from "./useIsDark";
 
 const PARTICLE_COUNT = 900;
-
-function useIsDark() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsDark(root.classList.contains("dark"));
-
-    const observer = new MutationObserver(() => {
-      setIsDark(root.classList.contains("dark"));
-    });
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  return isDark;
-}
 
 function Dust({ color }: { color: string }) {
   const pointsRef = useRef<THREE.Points>(null);
