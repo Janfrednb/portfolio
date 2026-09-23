@@ -19,7 +19,7 @@ const logos = [
   },
   {
     name: "GSP Training",
-    src: "/logos/gsp-training.jpeg",
+    src: "/logos/gsp-training.png",
     href: "https://www.instagram.com/gsp.training?igsh=YXZwNHBoa3g5dnR1",
     kind: "instagram" as const,
   },
@@ -48,12 +48,13 @@ export default function TrustedBy() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-label={logo.kind === "site" ? t.trustedBy.viewSite : t.trustedBy.viewInstagram}
-              className="group relative flex h-20 w-40 items-center justify-center overflow-hidden rounded-lg bg-white p-1.5 opacity-70 shadow-sm grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+              className="group relative flex h-20 w-40 items-center justify-center opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             >
               <Image
                 src={logo.src}
                 alt={logo.name}
                 fill
+                unoptimized
                 className="object-contain"
               />
             </a>
