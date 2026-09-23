@@ -48,13 +48,13 @@ export default function TrustedBy() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-label={logo.kind === "site" ? t.trustedBy.viewSite : t.trustedBy.viewInstagram}
-              className="group relative flex h-14 w-32 items-center justify-center overflow-hidden rounded-lg bg-white p-2 opacity-70 shadow-sm grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+              className="group relative flex h-20 w-40 items-center justify-center overflow-hidden rounded-lg bg-white p-1.5 opacity-70 shadow-sm grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             >
               <Image
                 src={logo.src}
                 alt={logo.name}
                 fill
-                className="object-contain p-2"
+                className="object-contain"
               />
             </a>
           ))}

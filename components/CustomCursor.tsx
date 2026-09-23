@@ -66,7 +66,7 @@ export default function CustomCursor() {
         ref={ringRef}
         className={`pointer-events-none fixed top-0 left-0 z-[90] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border transition-[width,height,padding,opacity,background-color] duration-200 ${
           label
-            ? "h-16 w-auto whitespace-nowrap border-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-5 opacity-100"
+            ? "h-10 w-auto whitespace-nowrap border-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-3 opacity-100"
             : hovering
               ? "h-12 w-12 border-fuchsia-500/60 opacity-100"
               : "h-8 w-8 border-fuchsia-500/60 opacity-60"
