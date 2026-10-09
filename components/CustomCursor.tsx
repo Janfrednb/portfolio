@@ -8,6 +8,8 @@ export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
+  const [compact, setCompact] = useState(false);
+  const compactRef = useRef(false);
 
   useEffect(() => {
     const isFine = window.matchMedia("(pointer: fine)").matches;
@@ -30,13 +32,17 @@ export default function CustomCursor() {
       const el = document.elementFromPoint(e.clientX, e.clientY);
       const labelEl = el?.closest<HTMLElement>("[data-cursor-label]");
       setLabel(labelEl?.dataset.cursorLabel ?? null);
+      compactRef.current = labelEl?.dataset.cursorVariant === "compact";
+      setCompact(compactRef.current);
       setHovering(!!el?.closest("a, button"));
     }
 
     let frame: number;
     function raf() {
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
+      // Compact labels behave like a tooltip and stick to the pointer.
+      const ease = compactRef.current ? 1 : 0.18;
+      ringX += (targetX - ringX) * ease;
+      ringY += (targetY - ringY) * ease;
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
       }
@@ -59,13 +65,19 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className={`pointer-events-none fixed top-0 left-0 z-[90] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500 transition-opacity duration-150 ${
-          label ? "opacity-0" : "opacity-100"
+          label && !compact ? "opacity-0" : "opacity-100"
         }`}
       />
       <div
         ref={ringRef}
-        className={`pointer-events-none fixed top-0 left-0 z-[90] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border transition-[width,height,padding,opacity,background-color] duration-200 ${
-          label
+        className={`pointer-events-none fixed top-0 left-0 z-[90] flex items-center justify-center rounded-full border transition-[width,height,padding,opacity,background-color,translate] duration-200 ${
+          label && compact
+            ? "h-6 w-auto translate-x-3 translate-y-4 whitespace-nowrap border-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-2 opacity-90"
+            : "-translate-x-1/2 -translate-y-1/2"
+        } ${
+          label && compact
+            ? ""
+            : label
             ? "h-10 w-auto whitespace-nowrap border-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-3 opacity-100"
             : hovering
               ? "h-12 w-12 border-fuchsia-500/60 opacity-100"
@@ -73,7 +85,11 @@ export default function CustomCursor() {
         }`}
       >
         {label && (
-          <span className="font-mono text-xs font-semibold whitespace-nowrap text-white">
+          <span
+            className={`font-mono font-semibold whitespace-nowrap text-white ${
+              compact ? "text-[10px]" : "text-xs"
+            }`}
+          >
             {label}
           </span>
         )}

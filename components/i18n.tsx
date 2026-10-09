@@ -25,7 +25,7 @@ type Translations = {
     demo: string;
     code: string;
     viewProject: string;
-    projects: { reservista: ProjectCopy; solutar: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
+    projects: { reservista: ProjectCopy; solutar: ProjectCopy; lifeos: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
   };
   about: { badge: string; title: string; paragraph: string };
   stack: { badge: string };
@@ -46,7 +46,7 @@ const translations: Record<"es" | "en", Translations> = {
       ctaPrimary: "Ver GymVibe",
       ctaSecondary: "Contáctame",
     },
-    trustedBy: { label: "Con quién he trabajado", viewSite: "Ver sitio", viewInstagram: "Ver Instagram" },
+    trustedBy: { label: "Clientes y productos", viewSite: "Ver sitio", viewInstagram: "Ver Instagram" },
     featured: {
       badge: "Proyecto destacado",
       description:
@@ -63,6 +63,9 @@ const translations: Record<"es" | "en", Translations> = {
       projects: {
         reservista: { description: "Sistema de gestión integral para el Club de Tiro El Reservista: clientes, facturación, caja, inventario, catálogo, control de membresías, usuarios con roles y auditoría. En producción." },
         solutar: { description: "Plataforma web para Solutar, empresa de Seguridad y Salud en el Trabajo (SST) en Colombia. Gestiona inspecciones de equipos para trabajo en alturas: portal de administración, portal de clientes y generación de actas en PDF.", tech: "HTML · Tailwind CSS" },
+        lifeos: {
+          description: "App personal para centralizar la vida diaria: hábitos con calendario mensual, finanzas, registro de ánimo con sugerencias generadas por IA (Claude), tablero Kanban con drag & drop y un dashboard que cruza ánimo y hábitos. Instalable como PWA.",
+        },
         microtaller: {
           description: "Sistema de administración para talleres de motos: agenda de citas y checklist de alistamiento, con dashboard en tiempo real.",
         },
@@ -97,7 +100,7 @@ const translations: Record<"es" | "en", Translations> = {
       ctaPrimary: "See GymVibe",
       ctaSecondary: "Contact me",
     },
-    trustedBy: { label: "Companies I've worked with", viewSite: "Visit site", viewInstagram: "View Instagram" },
+    trustedBy: { label: "Clients & products", viewSite: "Visit site", viewInstagram: "View Instagram" },
     featured: {
       badge: "Featured project",
       description:
@@ -114,6 +117,9 @@ const translations: Record<"es" | "en", Translations> = {
       projects: {
         reservista: { description: "Full management system for the El Reservista shooting club: clients, billing, cash register, inventory, catalog, membership control, role-based users, and an audit log. Live in production." },
         solutar: { description: "Web platform for Solutar, an Occupational Health and Safety (OHS) company in Colombia. Manages equipment inspections for work-at-height safety: admin dashboard, client portal, and PDF inspection reports.", tech: "HTML · Tailwind CSS" },
+        lifeos: {
+          description: "Personal app to centralize everyday life: habits with a monthly calendar, finances, mood tracking with AI-generated suggestions (Claude), a drag-and-drop Kanban board, and a dashboard that correlates mood and habits. Installable as a PWA.",
+        },
         microtaller: {
           description: "Management system for motorcycle repair shops: appointment scheduling and an intake checklist, with a real-time dashboard.",
         },

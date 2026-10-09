@@ -29,6 +29,12 @@ const logos = [
     href: "https://links.elreservista.co",
     kind: "site" as const,
   },
+  {
+    name: "Life OS",
+    src: "/logos/life-os.svg",
+    href: "https://life-os-frontend-coral.vercel.app",
+    kind: "site" as const,
+  },
 ];
 
 export default function TrustedBy() {
@@ -47,6 +53,7 @@ export default function TrustedBy() {
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
+              data-cursor-variant="compact"
               data-cursor-label={logo.kind === "site" ? t.trustedBy.viewSite : t.trustedBy.viewInstagram}
               className="group relative flex h-20 w-40 items-center justify-center opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             >

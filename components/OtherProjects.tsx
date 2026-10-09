@@ -29,6 +29,15 @@ const projectsBase = [
     image: "/screenshots/solutar.png",
   },
   {
+    key: "lifeos" as const,
+    name: "Life OS",
+    tech: "React · TypeScript · Node · Express · Prisma · PostgreSQL · Claude API",
+    demoUrl: "https://life-os-frontend-coral.vercel.app",
+    repoUrl: "https://github.com/Janfrednb/life-os",
+    image: "/screenshots/life-os.png",
+    aspect: "aspect-[1528/674]",
+  },
+  {
     key: "microtaller" as const,
     name: "MicroTaller",
     tech: "Python · Flask · Bootstrap",
