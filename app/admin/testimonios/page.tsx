@@ -59,8 +59,6 @@ export default async function AdminTestimonialsPage() {
   const qrSvgHref = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(qrSvg)}`;
 
   const items = isDatabaseConfigured() ? await getAllTestimonials() : [];
-  const pending = items.filter((i) => i.status === "pending");
-  const rest = items.filter((i) => i.status !== "pending");
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -85,7 +83,7 @@ export default async function AdminTestimonialsPage() {
         <div className="min-w-0 flex-1 text-center sm:text-left">
           <h2 className="font-semibold text-zinc-950 dark:text-zinc-50">Tu link para clientes</h2>
           <p className="mt-1 text-sm text-zinc-500">
-            Compártelo por WhatsApp o imprime el QR. Los comentarios llegan como pendientes y solo se publican cuando los apruebas.
+            Compártelo por WhatsApp o imprime el QR. Los comentarios se publican al instante; desde aquí puedes ocultar o eliminar cualquiera.
           </p>
           <p className="mt-3 truncate rounded-lg bg-zinc-100 px-3 py-2 font-mono text-xs text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
             {url}
@@ -102,23 +100,16 @@ export default async function AdminTestimonialsPage() {
         </div>
       </section>
 
-      <h2 className="mt-12 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Pendientes ({pending.length})</h2>
-      {pending.length === 0 ? (
-        <p className="mt-3 text-sm text-zinc-500">No hay comentarios nuevos.</p>
+      <h2 className="mt-12 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Comentarios ({items.length})</h2>
+      {items.length === 0 ? (
+        <p className="mt-3 text-sm text-zinc-500">Todavía no hay comentarios.</p>
       ) : (
         <ul className="mt-4 space-y-4">
-          {pending.map((item) => (
+          {items.map((item) => (
             <Row key={item.id} item={item} />
           ))}
         </ul>
       )}
-
-      <h2 className="mt-12 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Revisados ({rest.length})</h2>
-      <ul className="mt-4 space-y-4">
-        {rest.map((item) => (
-          <Row key={item.id} item={item} />
-        ))}
-      </ul>
     </main>
   );
 }

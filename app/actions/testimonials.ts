@@ -58,7 +58,8 @@ export async function submitTestimonial(_prev: SubmitState, formData: FormData):
     return { status: "error", error: "server" };
   }
 
-  // New submissions start as "pending", so the public page does not change until approval.
+  // Reviews go live right away; the admin panel can still hide or delete them.
+  revalidatePath("/");
   revalidatePath("/admin/testimonios");
   return { status: "ok" };
 }

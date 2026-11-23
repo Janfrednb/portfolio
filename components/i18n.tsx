@@ -112,7 +112,7 @@ const translations: Record<"es" | "en", Translations> = {
     review: {
       badge: "Tu opinión",
       title: "¿Cómo fue trabajar conmigo?",
-      subtitle: "Me ayuda muchísimo saber qué tal te fue. Tu comentario puede aparecer en mi portafolio.",
+      subtitle: "Me ayuda muchísimo saber qué tal te fue. Tu comentario aparecerá en mi portafolio.",
       name: "Tu nombre",
       namePh: "Ej: Laura Gómez",
       role: "Tu cargo",
@@ -131,7 +131,7 @@ const translations: Record<"es" | "en", Translations> = {
       invalid: "Revisa tu nombre, la calificación y que el comentario tenga al menos 10 caracteres.",
       serverError: "No se pudo enviar ahora mismo. Intenta de nuevo en un momento.",
       thanksTitle: "¡Gracias!",
-      thanksBody: "Recibí tu opinión. La reviso y pronto aparecerá en mi portafolio.",
+      thanksBody: "Tu opinión ya está publicada en mi portafolio. ¡Gracias por la confianza!",
       backHome: "Ver portafolio",
     },
     about: {
@@ -200,7 +200,7 @@ const translations: Record<"es" | "en", Translations> = {
     review: {
       badge: "Your feedback",
       title: "How was working with me?",
-      subtitle: "It really helps me to know how it went. Your review may appear on my portfolio.",
+      subtitle: "It really helps me to know how it went. Your review will show up on my portfolio.",
       name: "Your name",
       namePh: "e.g. Laura Gómez",
       role: "Your role",
@@ -219,7 +219,7 @@ const translations: Record<"es" | "en", Translations> = {
       invalid: "Check your name, the rating, and that the review has at least 10 characters.",
       serverError: "Couldn't send it right now. Please try again in a moment.",
       thanksTitle: "Thank you!",
-      thanksBody: "I got your review. I'll check it and it will show up on my portfolio soon.",
+      thanksBody: "Your review is now live on my portfolio. Thanks for your trust!",
       backHome: "See portfolio",
     },
     about: {

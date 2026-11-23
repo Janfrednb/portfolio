@@ -128,8 +128,8 @@ export async function insertTestimonial(input: {
   if (!sql) throw new Error("DATABASE_URL is not configured");
   await ensureSchema(sql);
   await sql`
-    INSERT INTO testimonials (name, role, company, project, rating, message)
-    VALUES (${input.name}, ${input.role}, ${input.company}, ${input.project}, ${input.rating}, ${input.message})
+    INSERT INTO testimonials (name, role, company, project, rating, message, status)
+    VALUES (${input.name}, ${input.role}, ${input.company}, ${input.project}, ${input.rating}, ${input.message}, 'approved')
   `;
 }
 
