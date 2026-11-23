@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/i18n";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -20,6 +20,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Janfred Naranjo · Transformo ideas en software",
   description: "Portafolio de Janfred Naranjo, developer junior construyendo GymVibe, un SaaS de gestión para gimnasios en LATAM.",
+  applicationName: "Janfred",
+  appleWebApp: {
+    capable: true,
+    title: "Janfred",
+    statusBarStyle: "black",
+  },
+  icons: {
+    apple: "/icons/apple-touch-icon.png",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b10" },
+  ],
 };
 
 export default function RootLayout({
