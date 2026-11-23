@@ -19,6 +19,7 @@ export default function ReviewForm() {
   const [rating, setRating] = useState(5);
   const [hover, setHover] = useState(0);
   const [length, setLength] = useState(0);
+  const [projectLength, setProjectLength] = useState(0);
   const [startedAt] = useState(() => Date.now());
 
   const shown = hover || rating;
@@ -133,10 +134,20 @@ export default function ReviewForm() {
               </div>
 
               <label className="block">
-                <span className={labelClass}>
-                  {r.project} <span className="font-normal text-zinc-400">({r.optional})</span>
+                <span className={`flex items-baseline justify-between ${labelClass}`}>
+                  <span>
+                    {r.project} <span className="font-normal text-zinc-400">({r.optional})</span>
+                  </span>
+                  <span className="font-mono text-xs font-normal text-zinc-400">{projectLength}/200</span>
                 </span>
-                <input name="project" maxLength={80} placeholder={r.projectPh} className={fieldClass} />
+                <textarea
+                  name="project"
+                  maxLength={200}
+                  rows={2}
+                  placeholder={r.projectPh}
+                  onChange={(e) => setProjectLength(e.target.value.length)}
+                  className={`${fieldClass} resize-none`}
+                />
               </label>
 
               <label className="block">

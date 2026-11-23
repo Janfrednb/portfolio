@@ -12,7 +12,7 @@ import { checkPassword, endAdminSession, isAdmin, startAdminSession } from "@/li
 
 export type SubmitState = { status: "idle" | "ok" | "error"; error?: "invalid" | "server" };
 
-const LIMITS = { name: 80, role: 80, company: 80, project: 80, message: 600 };
+const LIMITS = { name: 80, role: 80, company: 80, project: 200, message: 600 };
 
 function text(formData: FormData, key: keyof typeof LIMITS) {
   const value = String(formData.get(key) ?? "").trim().replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");

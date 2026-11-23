@@ -335,14 +335,19 @@ function Card({ item }: { item: PublicTestimonial }) {
           ))}
         </div>
 
-        <p className="mt-4 line-clamp-7 flex-1 text-sm leading-relaxed whitespace-pre-line text-zinc-700 dark:text-zinc-300">
+        <p
+          className={`mt-4 flex-1 text-sm leading-relaxed whitespace-pre-line text-zinc-700 dark:text-zinc-300 ${
+            item.project ? "line-clamp-5" : "line-clamp-7"
+          }`}
+        >
           {item.message}
         </p>
 
         {item.project && (
-          <span className="mt-3 self-start rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-wide text-fuchsia-600 uppercase dark:text-fuchsia-400">
+          // Can be up to 200 characters, so it is a short note rather than a pill.
+          <p title={item.project} className="mt-3 line-clamp-3 border-l-2 border-fuchsia-500/60 pl-2.5 text-xs leading-snug text-fuchsia-700 dark:text-fuchsia-300">
             {item.project}
-          </span>
+          </p>
         )}
 
         <div className="mt-4 flex items-center gap-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
