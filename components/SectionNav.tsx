@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "./i18n";
 
-const SECTION_IDS = ["hero", "gymvibe", "proyectos", "sobre-mi", "stack", "contacto"] as const;
+const SECTION_IDS = ["hero", "gymvibe", "proyectos", "testimonios", "sobre-mi", "stack", "contacto"] as const;
 
 export default function SectionNav() {
   const { t } = useLanguage();
@@ -14,6 +14,7 @@ export default function SectionNav() {
     hero: t.hero.greeting,
     gymvibe: t.nav.gymvibe,
     proyectos: t.nav.proyectos,
+    testimonios: t.nav.testimonios,
     "sobre-mi": t.nav.sobreMi,
     stack: t.nav.stack,
     contacto: t.nav.contacto,

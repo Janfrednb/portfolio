@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 type ProjectCopy = { description: string; tech?: string };
 
 type Translations = {
-  nav: { gymvibe: string; proyectos: string; sobreMi: string; stack: string; contacto: string; openMenu: string };
+  nav: { gymvibe: string; proyectos: string; testimonios: string; sobreMi: string; stack: string; contacto: string; openMenu: string };
   hero: {
     greeting: string;
     headingPre: string;
@@ -27,6 +27,32 @@ type Translations = {
     viewProject: string;
     projects: { reservista: ProjectCopy; solutar: ProjectCopy; lifeos: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
   };
+  testimonials: { badge: string; title: string; subtitle: string; drag: string; prev: string; next: string; leaveOne: string };
+  review: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    name: string;
+    namePh: string;
+    role: string;
+    rolePh: string;
+    company: string;
+    companyPh: string;
+    project: string;
+    projectPh: string;
+    rating: string;
+    ratingLabels: [string, string, string, string, string];
+    message: string;
+    messagePh: string;
+    optional: string;
+    submit: string;
+    sending: string;
+    invalid: string;
+    serverError: string;
+    thanksTitle: string;
+    thanksBody: string;
+    backHome: string;
+  };
   about: { badge: string; title: string; paragraph: string };
   stack: { badge: string };
   contact: { badge: string; title: string; subtitle: string };
@@ -34,7 +60,7 @@ type Translations = {
 
 const translations: Record<"es" | "en", Translations> = {
   es: {
-    nav: { gymvibe: "GymVibe", proyectos: "Proyectos", sobreMi: "Sobre mí", stack: "Stack", contacto: "Contacto", openMenu: "Abrir menú" },
+    nav: { gymvibe: "GymVibe", proyectos: "Proyectos", testimonios: "Testimonios", sobreMi: "Sobre mí", stack: "Stack", contacto: "Contacto", openMenu: "Abrir menú" },
     hero: {
       greeting: "Hola, soy Janfred",
       headingPre: "Transformo ",
@@ -74,6 +100,40 @@ const translations: Record<"es" | "en", Translations> = {
         },
       },
     },
+    testimonials: {
+      badge: "Testimonios",
+      title: "Lo que dicen mis clientes",
+      subtitle: "Opiniones reales de personas y negocios para los que he construido software.",
+      drag: "Arrastra",
+      prev: "Anterior",
+      next: "Siguiente",
+      leaveOne: "¿Trabajamos juntos? Deja tu opinión",
+    },
+    review: {
+      badge: "Tu opinión",
+      title: "¿Cómo fue trabajar conmigo?",
+      subtitle: "Me ayuda muchísimo saber qué tal te fue. Tu comentario puede aparecer en mi portafolio.",
+      name: "Tu nombre",
+      namePh: "Ej: Laura Gómez",
+      role: "Tu cargo",
+      rolePh: "Ej: Gerente",
+      company: "Empresa o negocio",
+      companyPh: "Ej: Club de Tiro El Reservista",
+      project: "¿Qué te construí?",
+      projectPh: "Ej: Sistema de facturación",
+      rating: "Calificación",
+      ratingLabels: ["Mala", "Regular", "Buena", "Muy buena", "Excelente"],
+      message: "Tu comentario",
+      messagePh: "Cuéntame cómo fue el proceso, el resultado y qué cambió en tu negocio...",
+      optional: "opcional",
+      submit: "Enviar opinión",
+      sending: "Enviando...",
+      invalid: "Revisa tu nombre, la calificación y que el comentario tenga al menos 10 caracteres.",
+      serverError: "No se pudo enviar ahora mismo. Intenta de nuevo en un momento.",
+      thanksTitle: "¡Gracias!",
+      thanksBody: "Recibí tu opinión. La reviso y pronto aparecerá en mi portafolio.",
+      backHome: "Ver portafolio",
+    },
     about: {
       badge: "Quién soy",
       title: "Sobre mí",
@@ -88,7 +148,7 @@ const translations: Record<"es" | "en", Translations> = {
     },
   },
   en: {
-    nav: { gymvibe: "GymVibe", proyectos: "Projects", sobreMi: "About", stack: "Stack", contacto: "Contact", openMenu: "Open menu" },
+    nav: { gymvibe: "GymVibe", proyectos: "Projects", testimonios: "Testimonials", sobreMi: "About", stack: "Stack", contacto: "Contact", openMenu: "Open menu" },
     hero: {
       greeting: "Hi, I'm Janfred",
       headingPre: "I turn ",
@@ -127,6 +187,40 @@ const translations: Record<"es" | "en", Translations> = {
           description: "Appointment management system for a small business: React (Vite) frontend and a Flask backend with SQLAlchemy and SQLite.",
         },
       },
+    },
+    testimonials: {
+      badge: "Testimonials",
+      title: "What my clients say",
+      subtitle: "Real feedback from people and businesses I've built software for.",
+      drag: "Drag",
+      prev: "Previous",
+      next: "Next",
+      leaveOne: "Did we work together? Leave a review",
+    },
+    review: {
+      badge: "Your feedback",
+      title: "How was working with me?",
+      subtitle: "It really helps me to know how it went. Your review may appear on my portfolio.",
+      name: "Your name",
+      namePh: "e.g. Laura Gómez",
+      role: "Your role",
+      rolePh: "e.g. Manager",
+      company: "Company or business",
+      companyPh: "e.g. El Reservista Shooting Club",
+      project: "What did I build for you?",
+      projectPh: "e.g. Billing system",
+      rating: "Rating",
+      ratingLabels: ["Poor", "Fair", "Good", "Very good", "Excellent"],
+      message: "Your review",
+      messagePh: "Tell me about the process, the result, and what changed for your business...",
+      optional: "optional",
+      submit: "Send review",
+      sending: "Sending...",
+      invalid: "Check your name, the rating, and that the review has at least 10 characters.",
+      serverError: "Couldn't send it right now. Please try again in a moment.",
+      thanksTitle: "Thank you!",
+      thanksBody: "I got your review. I'll check it and it will show up on my portfolio soon.",
+      backHome: "See portfolio",
     },
     about: {
       badge: "Who I am",
