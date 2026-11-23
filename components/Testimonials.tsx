@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import { createPortal } from "react-dom";
 import type { PublicTestimonial } from "@/lib/testimonials";
 import Reveal from "./Reveal";
 import Badge from "./Badge";
@@ -46,7 +47,7 @@ function FlatRow({ items }: { items: PublicTestimonial[] }) {
     <div className="mx-auto mt-14 flex max-w-4xl flex-col items-center justify-center gap-6 px-6 sm:flex-row">
       {items.map((item) => (
         <Tilt key={item.id} className="w-full max-w-sm">
-          <Card item={item} />
+          <Card item={item} clamp={false} />
         </Tilt>
       ))}
     </div>
@@ -55,6 +56,7 @@ function FlatRow({ items }: { items: PublicTestimonial[] }) {
 
 function Ring({ items }: { items: PublicTestimonial[] }) {
   const { t } = useLanguage();
+  const [open, setOpen] = useState<PublicTestimonial | null>(null);
   const n = items.length;
   // Repeating whole copies keeps duplicates on opposite sides of the ring, never facing the viewer together.
   const copies = Math.max(1, Math.ceil(MIN_SLOTS / n));
@@ -62,7 +64,7 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
   const step = 360 / slots.length;
 
   const [cardW, setCardW] = useState(320);
-  const cardH = cardW < 300 ? 320 : 330;
+  const cardH = cardW < 300 ? 380 : 400;
   // Distance from the ring center that keeps neighbouring cards from overlapping.
   const radius = Math.max(cardW * 1.05, cardW / 2 / Math.tan(Math.PI / slots.length) + 28);
 
@@ -82,6 +84,7 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
     snapTo: null as number | null,
     reduced: false,
     visible: false,
+    paused: false,
   });
 
   useEffect(() => {
@@ -116,7 +119,7 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
           m.snapTo = null;
         }
       } else if (!m.dragging) {
-        const target = m.hovering || m.reduced ? 0 : AUTO_SPEED;
+        const target = m.hovering || m.reduced || m.paused ? 0 : AUTO_SPEED;
         // Eases toward the cruise speed, which also gives a drag release its inertia.
         m.velocity += (target - m.velocity) * Math.min(1, 0.035 * dt);
         m.angle += m.velocity * dt;
@@ -183,7 +186,14 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
     m.snapTo = Math.round(base / step) * step - dir * step;
   }
 
+  // Hold the ring still while a full review is open.
+  useEffect(() => {
+    motion.current.paused = open !== null;
+  }, [open]);
+
   function onPointerDown(e: PointerEvent<HTMLDivElement>) {
+    // Let buttons inside cards ("Leer completo") receive their click instead of starting a drag.
+    if ((e.target as HTMLElement).closest("button")) return;
     const m = motion.current;
     m.dragging = true;
     m.snapTo = null;
@@ -239,7 +249,7 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
           endDrag();
         }}
         onKeyDown={onKeyDown}
-        className="relative mx-auto h-[460px] w-full touch-pan-y outline-none select-none sm:h-[500px]"
+        className="relative mx-auto h-[520px] w-full touch-pan-y outline-none select-none sm:h-[570px]"
         style={{ perspective: "1400px", perspectiveOrigin: "50% 40%" }}
       >
         {/* Glow "floor" under the ring */}
@@ -270,7 +280,7 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
               }}
             >
               <div className="h-full w-full transition-transform duration-300 ease-out hover:!scale-[1.04]">
-                <Card item={item} />
+                <Card item={item} clamp onReadMore={setOpen} />
               </div>
             </div>
           ))}
@@ -288,6 +298,8 @@ function Ring({ items }: { items: PublicTestimonial[] }) {
           →
         </RoundButton>
       </div>
+
+      {open && <ReviewModal item={open} onClose={() => setOpen(null)} />}
     </div>
   );
 }
@@ -314,8 +326,45 @@ function initials(name: string) {
     .join("");
 }
 
-function Card({ item }: { item: PublicTestimonial }) {
+function Card({
+  item,
+  clamp,
+  onReadMore,
+}: {
+  item: PublicTestimonial;
+  clamp: boolean;
+  onReadMore?: (item: PublicTestimonial) => void;
+}) {
+  const { t } = useLanguage();
   const subtitle = [item.role, item.company].filter(Boolean).join(" · ");
+  const boxRef = useRef<HTMLDivElement>(null);
+  const messageRef = useRef<HTMLParagraphElement>(null);
+  const projectRef = useRef<HTMLParagraphElement>(null);
+  const [truncated, setTruncated] = useState(false);
+  const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined);
+
+  // In fixed-height cards the message fills the space left, cut on a whole line with a fade;
+  // "Leer completo" only shows up when something is actually hidden.
+  useEffect(() => {
+    if (!clamp) return;
+    const box = boxRef.current;
+    const message = messageRef.current;
+    const project = projectRef.current;
+    if (!box || !message) return;
+    const check = () => {
+      const lineHeight = parseFloat(getComputedStyle(message).lineHeight) || 22;
+      const lines = Math.max(2, Math.floor((box.clientHeight + 1) / lineHeight));
+      setMaxHeight(lines * lineHeight);
+      const messageCut = message.scrollHeight > lines * lineHeight + 1;
+      const projectCut = project ? project.scrollHeight > project.clientHeight + 1 : false;
+      setTruncated(messageCut || projectCut);
+    };
+    check();
+    const observer = new ResizeObserver(check);
+    observer.observe(box);
+    if (project) observer.observe(project);
+    return () => observer.disconnect();
+  }, [clamp, item.message, item.project]);
 
   return (
     <article className="h-full rounded-2xl bg-gradient-to-br from-violet-600/70 via-fuchsia-500/40 to-orange-500/70 p-px shadow-[0_20px_60px_-20px_rgba(217,70,239,0.45)]">
@@ -335,19 +384,46 @@ function Card({ item }: { item: PublicTestimonial }) {
           ))}
         </div>
 
-        <p
-          className={`mt-4 flex-1 text-sm leading-relaxed whitespace-pre-line text-zinc-700 dark:text-zinc-300 ${
-            item.project ? "line-clamp-5" : "line-clamp-7"
-          }`}
-        >
-          {item.message}
-        </p>
+        <div ref={boxRef} className={clamp ? "mt-4 min-h-0 flex-1" : "mt-4"}>
+          <p
+            ref={messageRef}
+            className="overflow-hidden text-sm leading-relaxed whitespace-pre-line text-zinc-700 dark:text-zinc-300"
+            style={
+              clamp
+                ? {
+                    maxHeight,
+                    ...(truncated
+                      ? {
+                          maskImage: "linear-gradient(to bottom, black calc(100% - 1.6em), transparent)",
+                          WebkitMaskImage: "linear-gradient(to bottom, black calc(100% - 1.6em), transparent)",
+                        }
+                      : {}),
+                  }
+                : undefined
+            }
+          >
+            {item.message}
+          </p>
+        </div>
 
         {item.project && (
           // Can be up to 200 characters, so it is a short note rather than a pill.
-          <p title={item.project} className="mt-3 line-clamp-3 border-l-2 border-fuchsia-500/60 pl-2.5 text-xs leading-snug text-fuchsia-700 dark:text-fuchsia-300">
+          <p
+            ref={projectRef}
+            className={`mt-3 border-l-2 ${clamp ? "line-clamp-3" : ""} border-fuchsia-500/60 pl-2.5 text-xs leading-snug text-fuchsia-700 dark:text-fuchsia-300`}
+          >
             {item.project}
           </p>
+        )}
+
+        {clamp && truncated && onReadMore && (
+          <button
+            type="button"
+            onClick={() => onReadMore(item)}
+            className="mt-3 self-start text-xs font-semibold text-fuchsia-600 underline-offset-4 hover:underline dark:text-fuchsia-400"
+          >
+            {t.testimonials.readMore} →
+          </button>
         )}
 
         <div className="mt-4 flex items-center gap-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
@@ -361,5 +437,51 @@ function Card({ item }: { item: PublicTestimonial }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function ReviewModal({ item, onClose }: { item: PublicTestimonial; onClose: () => void }) {
+  const { t } = useLanguage();
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const onKey = (e: globalThis.KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  // Portal to <body>: the 3D ring's transforms would otherwise trap a fixed-position overlay.
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.name}
+      onClick={onClose}
+      className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        data-lenis-prevent
+        className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-2xl"
+      >
+        <Card item={item} clamp={false} />
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          aria-label={t.testimonials.close}
+          className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 bg-white/90 text-sm text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900/90 dark:text-zinc-200"
+        >
+          ✕
+        </button>
+      </div>
+    </div>,
+    document.body,
   );
 }

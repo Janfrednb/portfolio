@@ -27,7 +27,7 @@ type Translations = {
     viewProject: string;
     projects: { reservista: ProjectCopy; solutar: ProjectCopy; lifeos: ProjectCopy; microtaller: ProjectCopy; citas: ProjectCopy };
   };
-  testimonials: { badge: string; title: string; subtitle: string; drag: string; prev: string; next: string; leaveOne: string };
+  testimonials: { badge: string; title: string; subtitle: string; drag: string; prev: string; next: string; leaveOne: string; readMore: string; close: string };
   review: {
     badge: string;
     title: string;
@@ -108,6 +108,8 @@ const translations: Record<"es" | "en", Translations> = {
       prev: "Anterior",
       next: "Siguiente",
       leaveOne: "¿Trabajamos juntos? Deja tu opinión",
+      readMore: "Leer completo",
+      close: "Cerrar",
     },
     review: {
       badge: "Tu opinión",
@@ -196,6 +198,8 @@ const translations: Record<"es" | "en", Translations> = {
       prev: "Previous",
       next: "Next",
       leaveOne: "Did we work together? Leave a review",
+      readMore: "Read full review",
+      close: "Close",
     },
     review: {
       badge: "Your feedback",
