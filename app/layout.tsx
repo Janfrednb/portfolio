@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import SiteBackground from "@/components/SiteBackground";
+import SuppressInstallPrompt from "@/components/SuppressInstallPrompt";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -58,6 +59,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <SuppressInstallPrompt />
         <SiteBackground />
         <Preloader />
         <CustomCursor />
