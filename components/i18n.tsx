@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 type ProjectCopy = { description: string; tech?: string };
 
 type Translations = {
-  nav: { gymvibe: string; proyectos: string; testimonios: string; sobreMi: string; stack: string; contacto: string; openMenu: string };
+  nav: { gymvibe: string; proyectos: string; testimonios: string; sobreMi: string; stack: string; contacto: string; openMenu: string; share: string; copied: string; shareText: string };
   hero: {
     greeting: string;
     headingPre: string;
@@ -60,7 +60,7 @@ type Translations = {
 
 const translations: Record<"es" | "en", Translations> = {
   es: {
-    nav: { gymvibe: "GymVibe", proyectos: "Proyectos", testimonios: "Testimonios", sobreMi: "Sobre mí", stack: "Stack", contacto: "Contacto", openMenu: "Abrir menú" },
+    nav: { gymvibe: "GymVibe", proyectos: "Proyectos", testimonios: "Testimonios", sobreMi: "Sobre mí", stack: "Stack", contacto: "Contacto", openMenu: "Abrir menú", share: "Compartir", copied: "¡Link copiado!", shareText: "Mira mi portafolio: transformo ideas en software." },
     hero: {
       greeting: "Hola, soy Janfred",
       headingPre: "Transformo ",
@@ -148,7 +148,7 @@ const translations: Record<"es" | "en", Translations> = {
     },
   },
   en: {
-    nav: { gymvibe: "GymVibe", proyectos: "Projects", testimonios: "Testimonials", sobreMi: "About", stack: "Stack", contacto: "Contact", openMenu: "Open menu" },
+    nav: { gymvibe: "GymVibe", proyectos: "Projects", testimonios: "Testimonials", sobreMi: "About", stack: "Stack", contacto: "Contact", openMenu: "Open menu", share: "Share", copied: "Link copied!", shareText: "Check out my portfolio: I turn ideas into software." },
     hero: {
       greeting: "Hi, I'm Janfred",
       headingPre: "I turn ",

@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "Janfred Naranjo · Transformo ideas en software",
   description: "Portafolio de Janfred Naranjo, developer junior construyendo GymVibe, un SaaS de gestión para gimnasios en LATAM.",
   applicationName: "Janfred",
+  manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     title: "Janfred",

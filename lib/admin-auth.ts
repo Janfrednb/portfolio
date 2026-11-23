@@ -38,7 +38,7 @@ export async function startAdminSession() {
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
     path: "/",
-    maxAge: 60 * 60 * 24 * 30,
+    maxAge: 60 * 60 * 24 * 180, // long-lived so the installed phone app rarely asks to log in again
   });
 }
 

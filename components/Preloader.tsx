@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Preloader() {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
   const [hidden, setHidden] = useState(false);
+  // The admin panel is used as a quick phone app, so it skips the intro animation.
+  const skip = usePathname()?.startsWith("/admin") ?? false;
 
   useEffect(() => {
     const start = performance.now();
@@ -27,7 +30,7 @@ export default function Preloader() {
     return () => cancelAnimationFrame(frame);
   }, []);
 
-  if (hidden) return null;
+  if (hidden || skip) return null;
 
   return (
     <div

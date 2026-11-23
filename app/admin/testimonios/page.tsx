@@ -12,10 +12,16 @@ import {
 } from "@/app/actions/testimonials";
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 import CopyButton from "@/components/admin/CopyButton";
+import ShareButton from "@/components/ShareButton";
 
+// Its own manifest and icon, so the panel installs as a separate "Testimonios" app on the phone.
 export const metadata: Metadata = {
-  title: "Admin · Testimonios",
+  title: "Testimonios",
   robots: { index: false, follow: false },
+  manifest: "/admin.webmanifest",
+  applicationName: "Testimonios",
+  appleWebApp: { capable: true, title: "Testimonios", statusBarStyle: "black" },
+  icons: { apple: "/icons/admin-apple-touch-icon.png" },
 };
 
 async function reviewUrl() {
@@ -89,6 +95,14 @@ export default async function AdminTestimonialsPage() {
             {url}
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2 sm:justify-start">
+            <ShareButton
+              url={url}
+              title="Déjame tu opinión"
+              text="¿Cómo fue trabajar conmigo? Me ayudaría mucho que me dejaras tu opinión aquí:"
+              label="Compartir"
+              copiedLabel="¡Copiado!"
+              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 px-4 py-2 text-xs font-medium text-white"
+            />
             <CopyButton value={url} />
             <a href={qrPng} download="qr-opinion.png" className="rounded-full border border-zinc-300 px-4 py-2 text-xs font-medium text-zinc-700 hover:border-fuchsia-500 dark:border-zinc-700 dark:text-zinc-300">
               Descargar PNG

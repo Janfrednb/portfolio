@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import ShareButton from "./ShareButton";
 import { useLanguage } from "./i18n";
 
 export default function Navbar() {
@@ -38,6 +39,15 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <ShareButton
+            url="/"
+            title="Janfred Naranjo"
+            text={t.nav.shareText}
+            label={t.nav.share}
+            copiedLabel={t.nav.copied}
+            iconOnly
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-white/10"
+          />
           <a
             href="https://github.com/Janfrednb"
             target="_blank"
